@@ -19,7 +19,8 @@ function result = distanceCircleCircle3D(N0, r0, C0, N1, r1, C1 )
 %       equidistant: if infinite solutions exist
 %
 %  April 10, 2023:
-%  Transcribed from C++ to Matlab by Aaron Becker, atbecker@uh.edu, based on
+%  Transcribed from C++ to Matlab by Aaron Becker atbecker@uh.edu, 
+%  and Victor Montano, based on
 %  the 3D circle-circle distance algorithm is described in
 %  https://www.geometrictools.com/Documentation/DistanceToCircle3.pdf
 %  and available at https://www.geometrictools.com/GTE/Mathematics/DistCircle3Circle3.h
@@ -31,8 +32,8 @@ function result = distanceCircleCircle3D(N0, r0, C0, N1, r1, C1 )
 %  https://www.geometrictools.com/License/Boost/LICENSE_1_0.txt
 %  Version: 6.0.2022.01.06
 
-PRECISION = 1e-6;  %value used for numerical error.
-% set up results
+PRECISION = 1e-6;  %values less than PRECISION are ignored (numerical error).
+% set up the struct result
 result.distance = NaN;
 result.sqrDistance = NaN;
 result.numClosestPairs = 0;
@@ -43,7 +44,7 @@ result.equidistant = false;
 zero = 0;   % our value for 0.  Kept to match source.
 vzero = [0,0,0]; % 3x1 zero vector.
 D = C1 - C0;  % distance vector from 0 to 1.
-N0 = N0/norm(N0);  % ENSURE N0 and N1 are unit vectors (Aaron added)
+N0 = N0/norm(N0);  % ENSURE N0 and N1 are unit vectors 
 N1 = N1/norm(N1);
 
 N0xN1 = cross(N0, N1);
@@ -92,20 +93,19 @@ if ~isequal(N0xN1,vzero)
     %  stores the roots. We need only the unique ones, which is
     %  the responsibility of the set uniqueRoots. The pairs[]
     %  array stores the (cosine,sine) information mentioned in the
-    %  PDF. TODO: Choose the maximum number of iterations for root
-    %  finding based on specific polynomial data?
-    %
-    % maxIterations = 128;  %These are unused since we use Matlab's built
-    % in roots() to find the roots of the polyomino, and it doesn't take
+    %  PDF. 
+    % The following variables are unused since we use Matlab's built
+    % in roots() to find the roots of the polynomial, and it doesn't take
     % any arguments.
+    % maxIterations = 128;  
     % degree = 0;
     % numRoots = 0;
     % roots =[];
     % uniqueRoots = [];
+    % temp = zero;
+    % sn = zero;
     numPairs = 0;
     pairs = [];
-    %temp = zero;
-    %sn = zero;
 
     % if  p7.GetDegree() > 0 || p7(1) ~= zero    %https://www.geometrictools.com/GTE/Mathematics/Polynomial1.h
     % GetDegree is mCoefficient.size() - 1
@@ -152,6 +152,7 @@ if ~isequal(N0xN1,vzero)
             end
         end
     else % Circles in Nonparallel Planes but Centers on Normal Line  (p7 = 0)
+        %%% the next 7 lines from the C are replaced by unique([removeImaginary(roots(p6));0]);
         % H(cs,sn) = p6(cs)
         % degree = static_cast<int32_t>(p6.GetDegree());
         % LogAssert(degree > 0, "Unexpected degree for p6.");
@@ -187,7 +188,7 @@ if ~isequal(N0xN1,vzero)
             diff = lenN0xDelta - r0;
             info.sqrDistance = N0dDelta * N0dDelta + diff * diff;
             delta = delta - N0dDelta * N0;
-            delta = delta/norm(delta);  %NORMALIZE in Matlab is not a unit norm vector. DON'T USE NORMALIZE
+            delta = delta/norm(delta);  %Note: NORMALIZE in Matlab is not a unit norm vector. 
             info.circle0Closest = C0 + r0 * delta;
             info.equidistant = false;
         else
@@ -199,9 +200,6 @@ if ~isequal(N0xN1,vzero)
         end
         candidates{i} = info;
     end
-    %sort(candidates.begin(), candidates.begin() + numPairs);
-    %[~,idx]=sort([candidates.sqrDistance]);
-    %candidates=candidates(idx);
     sqrDists = zeros(size(candidates));
     for i = 1:numel(candidates)
         sqrDists(i) = candidates{i}.sqrDistance;
@@ -233,14 +231,14 @@ result.distance = sqrt(result.sqrDistance);
 
 % The two circles are in parallel planes where D = C1 - C0, the
 % difference of circle centers.
-    function result = DoQueryParallelPlanes(N0, r0, C0, r1, C1, D)  %don't need N1 since parallel
+    function result = DoQueryParallelPlanes(N0, r0, C0, r1, C1, D)  % don't need N1 since circles are parallel
 
         N0dD = dot(N0, D);
         normProj = N0dD * N0;
         compProj = D - normProj;
         U = compProj;
-        d = norm(U);  %don't use NORMALIZE in Matlab for vectors!
-        U = U/d; %normalize the U  (Aaron added this)
+        d = norm(U);  
+        U = U/d; %normalize the U  (NORMALIZE in Matlab for vectors)
         %The configuration is determined by the relative location of the
         %intervals of projection of the circles on to the D-line.
         %Circle0 projects to [-r0,r0] and circle1 projects to
