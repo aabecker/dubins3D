@@ -116,6 +116,8 @@ if ~isequal(N0xN1,vzero)
         %LogAssert(degree > 0, "Unexpected degree for phi.");
         uniqueRoots = unique([removeImaginary(roots(phi));0]); %remove duplicates, remove small imaginary components, add trivial x=0 root
         % unique is a bit slow.  Could be faster using diff https://stackoverflow.com/questions/8174578/faster-way-to-achieve-unique-in-matlab-if-assumed-1d-pre-sorted-vector
+        % in 1000 calls, unique took 0.074 seconds, removeImaginary 0.028,
+        % and roots() 0.193 seconds.
         %numRoots = numel(uniqueRoots);
         % for  i = 0: numRoots
         %      uniqueRoots.insert(roots[i]);

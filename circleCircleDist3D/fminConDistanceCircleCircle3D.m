@@ -1,7 +1,9 @@
 function result = fminConDistanceCircleCircle3D(N0, r0, C0, N1, r1, C1 )
 %  Numerically computes the shortest distances in 3D between two circles using fmincon.
+% Requires the Optimization Toolbox
+%
 %  Inputs:  two circles circle 0, and circle 1, each described by 3
-%  parameters.
+%  parameters:
 %       N0: circle 0 normal vector (3x1)
 %       r0: circle 0 radius
 %       C0: circle 0 center position (3x1)
@@ -9,6 +11,16 @@ function result = fminConDistanceCircleCircle3D(N0, r0, C0, N1, r1, C1 )
 %       r1: circle 1 radius
 %       C1: circle 1 center position (3x1)
 %
+%  Outputs:
+%      result, a struct that includes the elements:
+%       distance: shortest distance (scalar)
+%       sqrDistance: squared shortest distance (scalar)
+%       numClosestPairs: how many closest pairs on the circles exist ,
+%       circle0Closest: coordinates of closest point on circle 0, 3xnumClosestPairs
+%       circle1Closest: coordinates of closest point on circle 1 , 3xnumClosestPairs
+%       equidistant: if infinite solutions exist
+%
+% Written by Aaron Becker, atbecker@uh.edu
 N0 = N0/norm(N0);  % ENSURE N0 and N1 are unit vectors (Aaron added)
 N1 = N1/norm(N1);
 
@@ -16,7 +28,7 @@ N1 = N1/norm(N1);
 % function FUN, subject to the linear inequalities A*X <= B. FUN accepts
 % input X and returns a scalar function value F evaluated at X. X0 may be
 % a scalar, vector, or matrix.
-X0 = [0;0];
+X0 = [0;0];  %initial guess for the two angles around circle 0 and circle 1
 A = [1,0;
     0,1;
     -1,0;
@@ -28,23 +40,17 @@ B = [pi;pi;pi;pi];
 
 X = fmincon(@(x) distSq(x,U0,V0, r0, C0, U1,V1, r1, C1  ),X0,A,B);
 
-
-%parameters that must be returned
-    %        distance: 0.5000
-    %     sqrDistance: 0.2500
-    % numClosestPairs: 1
-    %  circle0Closest: [1 0 0]
-    %  circle1Closest: [0.5000 0 0]
-    %     equidistant: 0
 result = distResult(X,U0,V0, r0, C0, U1,V1, r1, C1  );
+
+%%% DEBUGGING plots and outputs
 % disp(X)
-% 
+%
 % figure(40); clf
 % plotCircle(N0, C0,r0, 'r', 2)
 % hold on
 % plot3(result.circle0Closest(1), result.circle0Closest(2), result.circle0Closest(3), 'm.','markersize',14)
 % axis equal
-% 
+%
 % plotCircle(N1, C1,r1, 'b', 2)
 % hold on
 % plot3(result.circle1Closest(1), result.circle1Closest(2), result.circle1Closest(3), 'c.','markersize',14)

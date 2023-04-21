@@ -8,8 +8,8 @@ function testdistanceCircleCircle3D
 %
 
 format compact
-showTorus = true;
-% two circles in 3D: WORKS! His code reverses order of polyomials from Matlab's
+showTorus = true;   %draws a torus around each circle so that the tori just touch.
+%%% two circles in 3D: WORKS! The C code reverses order of polyomials compared to Matlab's
 % computeAnddrawSolutions( figNum, N0, r0, C0, N1, r1, C1  )
 % computeAnddrawSolutions( 1 , [1,0,0] , 2, [0,0,0], [0,1,0], 3, [3,4,1] ) %WORKS
 % computeAnddrawSolutions( 2 , [1,0,0] , 2, [0,0,0], [0,1,0], 3, [3,1,1]) %WORKS
@@ -33,11 +33,10 @@ computeAnddrawSolutions( 10, [0,1,0], 1, [0,0,0], [0,0,1], 0.5, [1,0,0]  )  % us
 computeAnddrawSolutions( 12, [0,1,0], 1, [0,0,0], [0,.1,1], 2, [1,0,0]  )  % works -- special case if orgthogonal?
 %computeAnddrawSolutions( 11, [0,1,1], 1, [0,0,0], [0,0,1], 1, [1,0,0]  )  % works -- 2 solutions
 
-
 % generate a case to check the roots of p6 instead of phi.
 %computeAnddrawSolutions( 13 , [0,0,1] ,2 , [0,0,0], [1,0,0], 2, [0,0,2]  ) % 5.3 Circles in Nonparallel Planes but Centers on Normal Line
 
-% % % % the planar cases: they seem to work!
+% % % % the planar cases: they work!
 % figure(20)
 % showTorus = false;
 % computeAnddrawSolutions( [4,3,1] , [0,0,1] ,2 , [0,0,0], [0,0,1], 2, [0,0,0]  ) % equal circles, works
@@ -52,10 +51,10 @@ computeAnddrawSolutions( 12, [0,1,0], 1, [0,0,0], [0,.1,1], 2, [1,0,0]  )  % wor
 % computeAnddrawSolutions( [4,3,10] , [0,0,1] ,3 , [0,0,0], [0,0,1], 4.6, -[1,0,0]  ) % inside circles 1, works
 
 
-
-
     function computeAnddrawSolutions( figNum, N0, r0, C0, N1, r1, C1  )
-
+        % given two circles, computes the distance and plots the results in
+        % fig figNum. If figNum is a 3x1 matrix representing a subfigure,
+        % draw this in the subfigure, otherwise it makes figure figNum
 
         if numel(figNum) == 1
             figure(figNum); clf;
@@ -68,7 +67,7 @@ computeAnddrawSolutions( 12, [0,1,0], 1, [0,0,0], [0,.1,1], 2, [1,0,0]  )  % wor
         hold on
 
         result = distanceCircleCircle3D(N0, r0, C0, N1, r1, C1 );
-        result
+        disp(result)
         if showTorus
             drawTorus(N0, r0, C0, result.distance/2,'r')
             drawTorus(N1, r1, C1, result.distance/2,'b')
@@ -105,7 +104,8 @@ computeAnddrawSolutions( 12, [0,1,0], 1, [0,0,0], [0,.1,1], 2, [1,0,0]  )  % wor
     end
 
     function drawTorus(N, r, C, R,color)
-        % draws a torus!
+        % draws a radius R torus in color around circle with normal N,
+        % radius r and center C.
         N = N/norm(N); %normalize the matrix
         [theta,phi] = meshgrid(linspace(0,2*pi,20));
 
@@ -162,7 +162,6 @@ computeAnddrawSolutions( 12, [0,1,0], 1, [0,0,0], [0,.1,1], 2, [1,0,0]  )  % wor
         end
         V = cross(W, U);
     end
-
 
     function testTorus( N0, r0, C0  ) %#ok<DEFNU>
         % used to test plotting of the circle and torus in 3D.

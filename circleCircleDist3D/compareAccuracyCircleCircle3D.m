@@ -1,5 +1,10 @@
 function [dists,timeReq] = compareAccuracyCircleCircle3D
-% tests the functions  distanceCircleCircle3D(N0, r0, C0, N1, r1, C1 )
+% tests the functions  distanceCircleCircle3D(N0, r0, C0, N1, r1, C1 ) and 
+% fminConDistanceCircleCircle3D(N0, r0, C0, N1, r1, C1 )
+%
+% fmincon is 76x slower, doesn't get the best answer, and only gets one answer
+% there are many solutions where fmincon is better than our solution by
+% 1.0e-16 (machine precision, so it doesn't matter).
 %
 % based on https://www.geometrictools.com/Documentation/DistanceToCircle3.pdf
 %
@@ -42,8 +47,10 @@ for c = 1:nSamples
     dists(2,c) = res.distance;
 end
 timeReq(2) = toc;
+
+figure(50)
 plot( [0,max(dists(:))], [0,max(dists(:))], 'r-', ...
-    dists(1,:),dists(2,:),'b.')
+    dists(1,:),dists(2,:),'b.','markersize',12)
 title(['8th order solver took ',num2str(timeReq(1)),'s, fmincon ',num2str(timeReq(2)),'s, for ',num2str(nSamples),' trials'] )
 %fmincon 76x slower, doesn't get the best answer, and only gets one answer
 axis tight
@@ -51,11 +58,12 @@ axis equal
 xlabel('8th order solver');
 ylabel('fmincon')
 
-
+% solutions where fmincon is better:  
+% fMbetter =  dists(1,:)-dists(2,:) > 0;
+% dists(1,fMbetter)-dists(2,fMbetter)   %all are about 1.0e-13*0.0089
 
 
 function computeAnddrawSolutions( figNum, N0, r0, C0, N1, r1, C1  )
-
 
 if numel(figNum) == 1
     figure(figNum); clf;
