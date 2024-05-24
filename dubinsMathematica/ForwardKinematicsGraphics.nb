@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[    193605,       4516]
-NotebookOptionsPosition[    192325,       4479]
-NotebookOutlinePosition[    192745,       4496]
-CellTagsIndexPosition[    192702,       4493]
+NotebookDataLength[    193785,       4521]
+NotebookOptionsPosition[    192505,       4484]
+NotebookOutlinePosition[    192925,       4501]
+CellTagsIndexPosition[    192882,       4498]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -16,11 +16,12 @@ Cell[CellGroupData[{
 Cell[TextData[{
  "ForwardKinematicsGraphics.nb \ndisplays a RRPRR robot in Denavit Hartenberg \
 next to an equivalent 3D Curve-Straight-Curve Dubins path.\n",
- StyleBox["Authors: Victor Montano and Aaron Becker",
+ StyleBox["Authors: Victor M. Baez  and Aaron T. Becker",
   FontSize->18]
 }], "Subtitle",
  CellChangeTimes->{{3.925551410023348*^9, 3.925551485240409*^9}, 
-   3.925560394520094*^9},ExpressionUUID->"da9466f2-9852-458d-bc37-\
+   3.925560394520094*^9, {3.9255663695385437`*^9, 
+   3.9255663781764603`*^9}},ExpressionUUID->"da9466f2-9852-458d-bc37-\
 dd54cbac7e33"],
 
 Cell[CellGroupData[{
@@ -3207,18 +3208,20 @@ Cell[BoxData[
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`d$$ = 1.4, $CellContext`dHOld$$ = {
-    1.9415926535897932`, -1.0932742434492475`, 
-    0.2890265241302612}, $CellContext`dh\[Theta]2$$ = 
-    1.9415926535897932`, $CellContext`dh\[Theta]4$$ = -1.0932742434492475`, \
-$CellContext`dh\[Theta]5$$ = 0.2890265241302612, $CellContext`dubinsOld$$ = {
-    1.2, 2.0483184101405456`, 
-    2.852566129459532}, $CellContext`rotatez$$ = -1.5, \
-$CellContext`\[Theta]1$$ = 1.2, $CellContext`\[Theta]2$$ = 
-    2.852566129459532, $CellContext`\[Phi]1$$ = 0.7, $CellContext`\[Phi]2$$ = 
-    2.0483184101405456`, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
-    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
-    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+   DynamicModuleBox[{$CellContext`d$$ = 
+    0.47000000000000003`, $CellContext`dHOld$$ = {2.023185668911827, 
+    1.5330972149518187`, 0.08796459430051407}, $CellContext`dh\[Theta]2$$ = 
+    2.023185668911827, $CellContext`dh\[Theta]4$$ = 
+    1.5330972149518187`, $CellContext`dh\[Theta]5$$ = 
+    0.08796459430051407, $CellContext`dubinsOld$$ = {
+    1.118406984677966, -1.6084954386379744`, 
+    3.053628059289279}, $CellContext`rotatez$$ = -0.8796459430051424, \
+$CellContext`\[Theta]1$$ = 1.118406984677966, $CellContext`\[Theta]2$$ = 
+    3.053628059289279, $CellContext`\[Phi]1$$ = -1.6336281798666923`, \
+$CellContext`\[Phi]2$$ = -1.6084954386379744`, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
       Hold["Dubins CSC inputs:"], Manipulate`Dump`ThisIsNotAControl}, {{
        Hold[$CellContext`dubinsOld$$], {-1, -1, -1}}}, {{
        Hold[$CellContext`dHOld$$], {-1, -1, -1}}}, {{
@@ -3378,7 +3381,7 @@ $CellContext`rotatez$$, {0, 0, 1}],
         Delimiter, {{$CellContext`rotatez$$, -1.5, "rotate z", Appearance -> 
           "Labeled"}, (-2) Pi, 2 Pi, Appearance -> "Labeled"}}, 
       "Options" :> {ControlPlacement -> Left}, "DefaultOptions" :> {}],
-     ImageSizeCache->{920., {315., 320.}},
+     ImageSizeCache->{927., {315., 320.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -3732,9 +3735,9 @@ $CellContext`v1 1.2}], Bold, FontSize -> $CellContext`fs]}, {
                Style[
                 Text[
                 "\!\(\*SubscriptBox[StyleBox[\"\[Phi]\",FontWeight->\"Bold\"],\
- \"1\"]\)", {$CellContext`r Cos[$CellContext`\[Phi]1/2] (5/8), $CellContext`r 
-                  Sin[$CellContext`\[Phi]1/2] (5/8), 0}], Bold, 
-                FontSize -> $CellContext`fs]}]}, {
+ \"1\"]\)", {($CellContext`r Cos[$CellContext`\[Phi]1/2]) (5/
+                   8), ($CellContext`r Sin[$CellContext`\[Phi]1/2]) (5/8), 
+                  0}], Bold, FontSize -> $CellContext`fs]}]}, {
              If[$CellContext`\[Theta]1 > 0, {
                Arrowheads[0.015], Thin, Black, 
                Arrow[
@@ -3794,6 +3797,7 @@ $CellContext`\[Phi]2 0.8]], Bold, FontSize -> $CellContext`fs]}]}, Black,
                  $CellContext`splineCircle[$CellContext`x1 + {$CellContext`r, 
                     0, 0}, $CellContext`r, {Pi - $CellContext`\[Theta]1, Pi}],
                   Pi/2, {$CellContext`r, 0, 
+                  
                   0}, $CellContext`x1], $CellContext`\[Phi]1, \
 $CellContext`v1, $CellContext`x1]}]}, {Orange, Thick, 
              
@@ -4396,6 +4400,7 @@ $CellContext`p0]; $CellContext`pp30 = {
             Part[$CellContext`p30, 2], 
             Part[$CellContext`p30, 3]}; $CellContext`fixedFrame = {{1, 0, 
            0}, {0, 1, 0}, {0, 0, 1}}; $CellContext`A30 = 
+          
           Dot[$CellContext`A10, $CellContext`A21, $CellContext`A32]; \
 $CellContext`A30t = 
           Transpose[$CellContext`A30]; {$CellContext`A10Rot, \
@@ -4496,18 +4501,18 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[422, 15, 393, 8, 109, "Subtitle",ExpressionUUID->"da9466f2-9852-458d-bc37-dd54cbac7e33"],
+Cell[422, 15, 451, 9, 109, "Subtitle",ExpressionUUID->"da9466f2-9852-458d-bc37-dd54cbac7e33"],
 Cell[CellGroupData[{
-Cell[840, 27, 232, 4, 67, "Section",ExpressionUUID->"9bcb1322-2ae6-4c0d-89f2-70372db3685c"],
-Cell[1075, 33, 107178, 2650, 8450, "Input",ExpressionUUID->"44f61a6a-d75c-472e-b225-507a2d6e3d89",
+Cell[898, 28, 232, 4, 67, "Section",ExpressionUUID->"9bcb1322-2ae6-4c0d-89f2-70372db3685c"],
+Cell[1133, 34, 107178, 2650, 8450, "Input",ExpressionUUID->"44f61a6a-d75c-472e-b225-507a2d6e3d89",
  InitializationCell->True],
-Cell[108256, 2685, 128, 3, 30, "Input",ExpressionUUID->"cc26fe80-2c93-4e55-9c4e-bb8e1eb36cca"]
+Cell[108314, 2686, 128, 3, 30, "Input",ExpressionUUID->"cc26fe80-2c93-4e55-9c4e-bb8e1eb36cca"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[108421, 2693, 157, 3, 53, "Section",ExpressionUUID->"44c33afa-31ad-48b9-960c-d6505b250129"],
+Cell[108479, 2694, 157, 3, 53, "Section",ExpressionUUID->"44c33afa-31ad-48b9-960c-d6505b250129"],
 Cell[CellGroupData[{
-Cell[108603, 2700, 20876, 504, 1669, "Input",ExpressionUUID->"0ff5cc95-3ec1-49e0-827c-5c59e743df0f"],
-Cell[129482, 3206, 62806, 1268, 654, "Output",ExpressionUUID->"4c8ae17a-9b4f-4380-9f34-cd59430b8b7d"]
+Cell[108661, 2701, 20876, 504, 1669, "Input",ExpressionUUID->"0ff5cc95-3ec1-49e0-827c-5c59e743df0f"],
+Cell[129540, 3207, 62928, 1272, 654, "Output",ExpressionUUID->"4c8ae17a-9b4f-4380-9f34-cd59430b8b7d"]
 }, {2}]]
 }, Open  ]]
 }, Open  ]]
