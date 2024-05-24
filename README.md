@@ -17,7 +17,10 @@ the [Alexander von Humboldt Foundation](https://www.humboldt-foundation.de/en/),
 Furthermore, we show that the number of solutions is not constant, with up to seven valid CSC path solutions even in non-singular regions.
 
 For programming a 2D Dubins path, see
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tjUVE3jto98/0.jpg)](https://www.youtube.com/watch?v=tjUVE3jto98)
+
 For programming a 2D Reeds Shepp path, see
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/fAqh_cy7ePI/0.jpg)](https://www.youtube.com/watch?v=fAqh_cy7ePI)
 
