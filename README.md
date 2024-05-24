@@ -3,7 +3,7 @@ A Dubins path is the shortest length path for an object with a bounded curvature
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/aWfmgsal0JU/0.jpg)](https://www.youtube.com/watch?v=aWfmgsal0JU)
 
-[ICRA, May 14 2024](https://2024.ieee-icra.org/) "An Analytic Solution to the 3D CSC Dubins Path Problem" by Victor M. Baez, Nikhil Navkar, Aaron T. Becker.
+[ICRA, May 14 2024](https://2024.ieee-icra.org/) "An Analytic Solution to the 3D CSC Dubins Path Problem" by Victor M. Baez, Nikhil Navkar, Aaron T. Becker. [Arxiv version here.](https://arxiv.org/abs/2405.08710)
 
 
 This work was initiated at the [Dagstuhl Seminar 23091, "Algorithmic Foundations of Programmable Matter" in 2023](https://www.dagstuhl.de/23091). We thank [Cynthia Sung](https://sung.seas.upenn.edu/research/) for presenting this open problem and for discussions on practical applications.  
@@ -14,4 +14,13 @@ the [Alexander von Humboldt Foundation](https://www.humboldt-foundation.de/en/),
 [2130793](https://nsf.gov/awardsearch/showAward?AWD_ID=2130793).
 
 >Paper abstract: We present an analytic solution to the 3D Dubins path problem for paths composed of an initial circular arc, a straight component, and a final circular arc. These are commonly called CSC paths.  By modeling the start and goal configurations of the path as the base frame and final frame of an RRPRR manipulator, we treat this as an inverse kinematics problem. The kinematic features of the 3D Dubins path are built into the constraints of our manipulator model. 
-Furthermore, we show that the number of solutions is not constant, with up to seven valid CSC path solutions even in non-singular regions. 
+Furthermore, we show that the number of solutions is not constant, with up to seven valid CSC path solutions even in non-singular regions.
+
+For programming a 2D Dubins path, see
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tjUVE3jto98/0.jpg)](https://www.youtube.com/watch?v=tjUVE3jto98)
+
+For programming a 2D Reeds Shepp path, see
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/fAqh_cy7ePI/0.jpg)](https://www.youtube.com/watch?v=fAqh_cy7ePI)
+
