@@ -14,4 +14,10 @@ the [Alexander von Humboldt Foundation](https://www.humboldt-foundation.de/en/),
 [2130793](https://nsf.gov/awardsearch/showAward?AWD_ID=2130793).
 
 >Paper abstract: We present an analytic solution to the 3D Dubins path problem for paths composed of an initial circular arc, a straight component, and a final circular arc. These are commonly called CSC paths.  By modeling the start and goal configurations of the path as the base frame and final frame of an RRPRR manipulator, we treat this as an inverse kinematics problem. The kinematic features of the 3D Dubins path are built into the constraints of our manipulator model. 
-Furthermore, we show that the number of solutions is not constant, with up to seven valid CSC path solutions even in non-singular regions. 
+Furthermore, we show that the number of solutions is not constant, with up to seven valid CSC path solutions even in non-singular regions.
+
+For programming a 2D Dubins path, see
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tjUVE3jto98/0.jpg)](https://www.youtube.com/watch?v=tjUVE3jto98)
+For programming a 2D Reeds Shepp path, see
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/fAqh_cy7ePI/0.jpg)](https://www.youtube.com/watch?v=fAqh_cy7ePI)
+
