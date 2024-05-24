@@ -3,7 +3,7 @@ A Dubins path is the shortest length path for an object with a bounded curvature
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/aWfmgsal0JU/0.jpg)](https://www.youtube.com/watch?v=aWfmgsal0JU)
 
-[ICRA, May 14 2024](https://2024.ieee-icra.org/) "An Analytic Solution to the 3D CSC Dubins Path Problem" by Victor M. Baez, Nikhil Navkar, Aaron T. Becker.
+[ICRA, May 14 2024](https://2024.ieee-icra.org/) "An Analytic Solution to the 3D CSC Dubins Path Problem" by Victor M. Baez, Nikhil Navkar, Aaron T. Becker. [Arxiv version here.](https://arxiv.org/abs/2405.08710)
 
 
 This work was initiated at the [Dagstuhl Seminar 23091, "Algorithmic Foundations of Programmable Matter" in 2023](https://www.dagstuhl.de/23091). We thank [Cynthia Sung](https://sung.seas.upenn.edu/research/) for presenting this open problem and for discussions on practical applications.  
